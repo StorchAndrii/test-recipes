@@ -80,7 +80,7 @@ function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
                 <p className="mt-1 text-base opacity-80">Cuisine: {recipe.cuisine}</p>
             </div>
             <button className="mt-4 flex w-full items-center rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 ease-in hover:bg-gray-100" type="button">
-                <div className="w-full"> View recipe</div>
+                <div className="w-full font-semibold"> View recipe</div>
                 <ArrowRight />
             </button>
         </div>
