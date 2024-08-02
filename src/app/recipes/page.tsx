@@ -39,7 +39,7 @@ export default async function RecipesPage({ searchParams }: RecipesPageProps): P
             <p className="mt-4 text-xl opacity-80">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, ut?</p>
             <TagSlider tags={tags} />
             <Suspense fallback={<div>Loading...</div>}>
-                <GroupRecipes page={page} recipes={recipesData.recipes} tag={tag} />
+                <GroupRecipes recipes={recipesData.recipes} />
             </Suspense>
             {recipesData.total > 9 && <Pagination currentPage={page} tag={tag} total={recipesData.total} />}
         </main>

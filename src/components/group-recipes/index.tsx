@@ -2,12 +2,10 @@ import RecipeItem from '@/components/recipe-item'
 import { type Recipe } from '@/types'
 
 interface GroupRecipesProps {
-    page: number
-    tag?: string
     recipes: Recipe[]
 }
 
-export default async function GroupRecipes({ page, tag, recipes }: GroupRecipesProps): Promise<JSX.Element> {
+export default function GroupRecipes({ recipes }: GroupRecipesProps): JSX.Element {
     // const data = await getRecipes({ page, tag })
     return (
         <div>

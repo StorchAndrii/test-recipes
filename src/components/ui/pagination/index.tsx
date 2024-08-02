@@ -19,19 +19,19 @@ function Pagination({ currentPage, tag, total }: PaginationProps): JSX.Element {
         }
     }
 
-    const handlePrevious = (page: number) => {
+    const handlePrevious = (page: number): void => {
         if (currentPage > 1) {
             router.push(`/recipes?page=${page.toString()}${tag ? `&tag=${tag}` : ''}`)
         }
     }
 
-    const handleNext = (page: number) => {
+    const handleNext = (page: number): void => {
         if (currentPage < totalPages) {
             router.push(`/recipes?page=${page.toString()}${tag ? `&tag=${tag}` : ''}`)
         }
     }
 
-    const handlePageChange = (page: number) => {
+    const handlePageChange = (page: number): void => {
         router.push(`/recipes?page=${page.toString()}${tag ? `&tag=${tag}` : ''}`)
     }
     return (
@@ -39,6 +39,7 @@ function Pagination({ currentPage, tag, total }: PaginationProps): JSX.Element {
             <button
                 className={`px-4 py-2 ${currentPage === 1 ? 'cursor-not-allowed text-gray-400' : ''}`}
                 disabled={currentPage === 1}
+                type="button"
                 onClick={() => {
                     handlePrevious(currentPage - 1)
                 }}
@@ -62,6 +63,7 @@ function Pagination({ currentPage, tag, total }: PaginationProps): JSX.Element {
             <button
                 className={`px-4 py-2 ${currentPage === totalPages ? 'cursor-not-allowed text-gray-400' : ''}`}
                 disabled={currentPage === totalPages}
+                type="button"
                 onClick={() => {
                     handleNext(currentPage + 1)
                 }}
