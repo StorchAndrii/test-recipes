@@ -1,5 +1,5 @@
 export interface ApiResponse<T> {
-    recipes: T[]
+    recipes: T
     total: number
     skip: number
     limit: number
