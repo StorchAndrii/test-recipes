@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import { useState } from 'react'
 
 interface CustomImageProps {
     image: string
@@ -9,6 +10,7 @@ interface CustomImageProps {
 }
 
 function CustomImage({ image, maxWidth, maxHeight, alt }: CustomImageProps): JSX.Element {
+    const [loading, setLoading] = useState(true)
     const myLoader = ({ src }: { src: string }): string => {
         return src
     }
@@ -18,9 +20,11 @@ function CustomImage({ image, maxWidth, maxHeight, alt }: CustomImageProps): JSX
             priority
             unoptimized
             alt={alt}
-            className="overflow-hidden rounded-xl"
+            blurDataURL="/images/img-bg.jpg"
+            className={`rounded-xl transition-opacity duration-300 ${loading ? 'opacity-0' : 'opacity-100'}`}
             height={1000}
             loader={myLoader}
+            placeholder="blur"
             src={image}
             style={{
                 maxWidth: maxWidth ? maxWidth : '300px',
@@ -30,6 +34,9 @@ function CustomImage({ image, maxWidth, maxHeight, alt }: CustomImageProps): JSX
                 objectFit: maxHeight ? 'cover' : 'contain',
             }}
             width={1000}
+            onLoad={() => {
+                setLoading(false)
+            }}
         />
     )
 }

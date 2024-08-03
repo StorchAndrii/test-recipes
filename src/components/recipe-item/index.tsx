@@ -53,9 +53,9 @@ function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
         }
     }, [recipe.difficulty])
     return (
-        <div className="rounded-xl border border-gray-300 p-4 shadow-md" ref={containerRef}>
-            <CustomImage alt={recipe.name} image={recipe.image} maxHeight="40%" maxWidth="100%" />
-            <div>
+        <div className="flex flex-col rounded-xl border border-gray-300 p-4 shadow-md" ref={containerRef}>
+            <CustomImage alt={recipe.name} image={recipe.image} maxHeight="280px" maxWidth="100%" />
+            <div className="grow text-start">
                 <div className="mt-4 flex flex-nowrap">
                     {recipe.tags.slice(0, maxTagsToShow).map((tag) => (
                         <Link
@@ -80,7 +80,7 @@ function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
                 <p className="mt-1 text-base opacity-80">Cuisine: {recipe.cuisine}</p>
             </div>
             <Link
-                className="mt-4 flex w-full items-center rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 ease-in hover:bg-gray-100"
+                className="mt-6 flex w-full items-center rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 ease-in hover:bg-gray-100"
                 href={`/recipe/${recipe.id.toString()}`}
             >
                 <div className="w-full font-semibold"> View recipe</div>

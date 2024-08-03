@@ -2,6 +2,7 @@ import NotFound from 'next/dist/client/components/not-found-error'
 import { Suspense } from 'react'
 
 import GroupRecipes from '@/components/group-recipes'
+import RecipesGrid from '@/components/skeleton/recipes-grid'
 import Pagination from '@/components/ui/pagination'
 import TagSlider from '@/components/ui/teg-swiper'
 import { getRecipes, getTags } from '@/lib/api'
@@ -22,10 +23,7 @@ interface RecipesPageProps {
 }
 
 export default async function RecipesPage({ searchParams }: RecipesPageProps): Promise<JSX.Element> {
-    searchParamsCache.parse(searchParams)
-
-    const page = searchParamsCache.get('page') || 1
-    const tag = searchParamsCache.get('tag') || ''
+    const { page, tag } = searchParamsCache.parse(searchParams)
     const data = await responsePage(page, tag)
 
     if (!data) {
@@ -38,8 +36,9 @@ export default async function RecipesPage({ searchParams }: RecipesPageProps): P
             <h1 className="text-5xl font-bold">Increasio Recipes</h1>
             <p className="mt-4 text-xl opacity-80">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, ut?</p>
             <TagSlider tags={tags} />
-            <Suspense fallback={<div>Loading...</div>}>
-                <GroupRecipes recipes={recipesData.recipes} />
+
+            <Suspense fallback={<RecipesGrid />} key={`${page.toString()}-${tag}`}>
+                <GroupRecipes page={page} tag={tag} />
             </Suspense>
             {recipesData.total > 9 && <Pagination currentPage={page} tag={tag} total={recipesData.total} />}
         </main>
