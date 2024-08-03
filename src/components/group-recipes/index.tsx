@@ -12,7 +12,7 @@ export default async function GroupRecipes({ page, tag }: GroupRecipesProps): Pr
 
     return (
         <div>
-            <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+            <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                 {data.recipes.map((recipe) => (
                     <li key={recipe.id}>
                         <RecipeItem recipe={recipe} />
