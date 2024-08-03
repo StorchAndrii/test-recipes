@@ -36,7 +36,6 @@ export default async function RecipesPage({ searchParams }: RecipesPageProps): P
             <h1 className="text-5xl font-bold">Increasio Recipes</h1>
             <p className="mt-4 text-xl opacity-80">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, ut?</p>
             <TagSlider tags={tags} />
-            <RecipesGridSkeleton />
             <Suspense fallback={<RecipesGridSkeleton />} key={`${page.toString()}-${tag}`}>
                 <GroupRecipes page={page} tag={tag} />
             </Suspense>
