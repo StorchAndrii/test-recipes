@@ -1,12 +1,14 @@
+'use client'
 import Image from 'next/image'
 
 interface CustomImageProps {
     image: string
     maxWidth?: string
     maxHeight?: string
+    alt: string
 }
 
-function CustomImage({ image, maxWidth, maxHeight }: CustomImageProps): JSX.Element {
+function CustomImage({ image, maxWidth, maxHeight, alt }: CustomImageProps): JSX.Element {
     const myLoader = ({ src }: { src: string }): string => {
         return src
     }
@@ -15,7 +17,7 @@ function CustomImage({ image, maxWidth, maxHeight }: CustomImageProps): JSX.Elem
         <Image
             priority
             unoptimized
-            alt="image"
+            alt={alt}
             className="overflow-hidden rounded-xl"
             height={1000}
             loader={myLoader}
