@@ -28,9 +28,14 @@ function TagSlider({ tags }: TagSliderProps): JSX.Element {
                 loop
                 navigation
                 breakpoints={{
+                    3440: { slidesPerView: 23 },
+                    2560: { slidesPerView: 18 },
+                    1920: { slidesPerView: 12 },
                     1024: { slidesPerView: 9 },
                     600: { slidesPerView: 6 },
-                    480: { slidesPerView: 3 },
+                    480: { slidesPerView: 4 },
+                    375: { slidesPerView: 3 },
+                    320: { slidesPerView: 2 },
                 }}
                 slidesPerView={7}
                 spaceBetween={10}
