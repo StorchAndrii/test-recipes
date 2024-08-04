@@ -3,7 +3,7 @@ import ContentLoader from 'react-content-loader'
 
 function RecipesGridSkeleton(): JSX.Element {
     return (
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {new Array(6).fill(0).map((_, index) => (
                 <div className="flex flex-col overflow-hidden rounded-xl border border-gray-300 shadow-md" key={index}>
                     <ContentLoader
