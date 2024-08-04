@@ -53,7 +53,12 @@ function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
         }
     }, [recipe.difficulty])
     return (
-        <div className="flex flex-col rounded-xl border border-gray-300 p-4 shadow-md" ref={containerRef}>
+        <div className="relative flex flex-col rounded-xl border border-gray-300 p-4 shadow-md" ref={containerRef}>
+            {recipe.rating > 4 && (
+                <div className="absolute -top-3 rounded-xl bg-red-600 px-4 py-0.5">
+                    <p className="text-sm capitalize text-white">most popular</p>
+                </div>
+            )}
             <CustomImage alt={recipe.name} image={recipe.image} maxHeight="280px" maxWidth="100%" />
             <div className="grow text-start">
                 <div className="mt-4 flex flex-nowrap">
